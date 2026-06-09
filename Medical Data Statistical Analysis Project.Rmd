@@ -1,0 +1,251 @@
+---
+title: "Medical Data Statistical Analysis Project"
+author: "Peter Voss"
+date: "2026-02-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Importing and Previewing the Data
+
+```{r importing the CSV and head(), echo = TRUE}
+
+medical_data <- read.csv("medicaldata_final.csv")
+
+head(medical_data)
+
+```
+
+
+
+## Converting Categorical Variables to Factors 
+
+``` {r factor conversions, echo = TRUE}
+
+medical_data$Gender <- factor(medical_data$Gender)
+
+medical_data$Education <- factor(medical_data$Education, ordered = TRUE, levels = c("8th Grade", "9 - 11th Grade", "High School", "Some College", "College Grad"))
+
+medical_data$MaritalStatus <- factor(medical_data$MaritalStatus)
+
+medical_data$Race <- factor(medical_data$Race)
+
+medical_data$Smoker <- factor(medical_data$Smoker)
+
+```
+
+
+
+## Exploratory Blood Pressure Analysis 
+
+``` {r checking for NAs, echo = TRUE}
+
+medical_data[is.na(medical_data$BPSysAve), ]
+
+```
+
+
+``` {r creating a histogram, echo = FALSE}
+
+hist(medical_data$BPSysAve, main = "Histogram of BPSysAve Sample", xlab = "BPSysAve")
+
+```
+
+``` {r creating a boxplot, echo = FALSE}
+
+boxplot(medical_data$BPSysAve, horizontal = TRUE, main = "BPSysAve Sample Boxplot", xlab = "BPSysAve")
+
+```
+
+
+``` {r summary statistics, echo = FALSE}  
+   
+summary(medical_data$BPSysAve)
+
+```
+  
+The histogram for BPSysAve appears right skewed; the bulk of the volume of the histogram's bars is towards the left of the graph, with data values stretching further to the right of the peak than to the left. The box part of the boxplot (the gray box) appears symmetric. The right whisker (the dotted line to the right of the gray box) of the boxplot appears a decent bit longer than the left whisker. It can be seen from the boxtplot that the BPSysAve data contains three outliers, shown by the three circles on the right side of the graph. Outliers are values in the data that significantly deviate from most other values in the data. The median of the data is 119.0 and the mean of the data is 120.2; these statistics can be used as measures of center. Values in the data range from 86.0, the minimum, or smallest, value in the data to 168.0, the maximum, or largest, value in the data. The 1st quartile value, 109.0, represents the value that 25% of the data falls below, and the 3rd quartile value, 129.0, represents the value that 75% of the data falls below. 
+   
+  
+
+## Marital Status Frequency Analysis
+
+``` {r creating a bar plot for MaritalStatus frequency, echo = FALSE}
+
+barplot(table(medical_data$MaritalStatus), main =  "Marital Status Bar Plot", ylab = "Frequency", xlab = "Marital Status", names.arg= c("D", "LP", "M", "NM", "S", "W"), col = c("coral", "chartreuse2", "dodgerblue1", "firebrick3", "gold2", "aquamarine1"))
+
+
+```
+
+``` {r MaritalStatus frequency table, echo = FALSE}
+
+table(medical_data$MaritalStatus)
+
+```
+
+The marital status bar plot above shows the frequency in the data for each marital status. The labels of the bars represent different marital statuses with D representing divorced, LP representing live partner, M representing married, NM representing never married, S representing separated, and W representing widowed. The bars for each marital status in order from highest to lowest are M, NM, LP, D, W, and S corresponding to the relative frequency in the data of each marital status from most frequent to least frequent. The frequency table shows the counts from the data for each marital status. By comparing these counts to each other, it can be determined how common each marital status is in the data relative to the other marital statuses. The counts for each marital status in order from highest to lowest are: 153 for married, 52 for never married, 28 for live partner, 26 for divorced, 16 for widowed, and 6 for separated.
+
+
+
+# Does Smoking Status Vary by Education Level?
+
+``` {r smoker_by_education, echo = FALSE}
+ 
+smoker_by_education <- table(medical_data$Smoker, medical_data$Education)
+
+barplot(proportions(smoker_by_education, 2), beside = TRUE, main = "Sample Proportions of Smoking Status by Education Level", ylab = "Proportion", xlab = "Education Level", ylim = c(0, 1), legend.text = row.names(smoker_by_education), col = c("gold", "red"))
+
+```
+
+To calculate P(Smoker|Education):
+``` {r proportions, echo = FALSE}
+
+proportions(smoker_by_education, 2)
+    
+
+```
+
+I do think that smoking status varies by education level. While the barplots show similar proportions of smokers and non-smokers between the 8th grade and 9-11th grade groups, the proportion of smokers declines for each of the next three education levels. The most significant declines occur between the 9-11th grade and high school groups, and the some college and college grad groups. The declines in the proportion of smokers can be seen on the bar plots by the progressively lower heights of the red bars after the 9-11th grade group's bar plot. It can be seen from the table of proportions, showing the probability of being a smoker (and not being a smoker) given education level, that the proportion of smokers drops from  0.6000000 to 0.5000000 between the 9-11th grade and high school groups, drops again from 0.5000000 to 0.4623656 between the high school and some college groups and finally, drops from 0.4623656 to 0.3289474 between the some college and college grad groups. In the group with the highest proportion of smokers, the 9-11th grade group, the majority of individuals in the data smoke (proportion of smokers: 0.6000000), while in the group with the lowest proportion of smokers, the college grad group, less than a third of the individuals in the data smoke (proportion of smokers: 0.3289474).
+
+
+
+## Is Pulse Normally Distributed?
+
+``` {r Pulse Q-Q plot, echo = FALSE}
+
+qqnorm(medical_data$Pulse, main = "Q-Q Plot of Pulse Sample",)
+qqline(medical_data$Pulse)
+
+```
+
+
+``` {r Pulse skewness, echo = TRUE }
+
+library(e1071)
+
+skewness(medical_data$Pulse)
+
+```
+
+
+``` {r Pulse kurtosis, echo = TRUE}
+
+kurtosis(medical_data$Pulse)
+
+```
+
+
+Shapiro-Wilk Test Information:
+
+H_0: pulse is normally distributed
+
+H_1: pulse is not normally distributed
+
+``` {r Pulse Shapiro-Wilk test, echo = FALSE}
+
+shapiro.test(medical_data$Pulse)
+
+```
+
+p-value: 0.4107
+
+Decision: Do not reject H_0
+
+Conclusion: There is not enough evidence that pulse is not normally distributed.
+
+
+It seems that pulse is normally distributed. The points on the Q-Q plot follow the reference line well which is consistent with the idea that pulse is normally distributed. The skewness value was 0.0865184 and the kurtosis value was -0.1884771; both of these values are relatively close to 0, also consistent with the idea that Pulse is normally distributed. For the Shapiro_Wilk test, the null hypothesis was that pulse is normally distributed, and the alternative hypothesis was that pulse is not normally distributed. The p-value for this test was 0.4107, which was greater than the significance level, 0.03. Because the p-value was greater than the significance level the decision was made to not reject the null hypothesis. The conclusion was that there is not enough evidence that pulse is not normally distributed.
+
+
+
+## Variable Creation and Related Analysis 
+
+``` {r constructing Age_tier, echo = TRUE}
+ 
+Age_Tier <- cut(medical_data$Age, breaks = c(0, 32, 45, 65, Inf), right = FALSE, labels = c("Young Adult", "Adult", "Middle Aged", "Seniors"), ordered_result = TRUE)
+
+
+```
+
+
+``` {r creating boxplots, echo = FALSE}
+
+boxplot(medical_data$BMI~Age_Tier, main = "Boxplots of Sample BMI by Age_Tier", ylab = "BMI")
+
+```
+
+``` {r summary statistics of BMI for Age_Tier groups, echo = FALSE}
+
+tapply(medical_data$BMI, Age_Tier, summary)
+
+```
+
+I do think that BMI varies by age tier. While the medians for the young adult, middle aged, and senior groups appear fairly close to one another, the median for the adult group is less similar to the medians of the other groups, as can be seen from both the boxplot and the summary statistics. Also, the upper fence and 3rd quartile value, 34.36, for the adult group are notably higher than the upper fences and 3rd quartile values for the other groups, which are relatively similar to one another. Other notable differences between the groups include the relatively low lower fence for the young adult group, and the presence of multiple outliers in the middle aged group.
+
+
+
+## Cholesterol Hypothesis Testing
+
+H_0: mu_total_cholesterol = 5.2
+
+H_1: mu_total_cholesterol < 5.2
+
+
+``` {r TotChol hypothesis testing, echo = FALSE}
+
+t.test(medical_data$TotChol, mu = 5.2, alternative = "less", conf.level = 0.92)
+
+```
+
+p-value: 0.1886
+
+Decision: Do not reject H_0
+
+Conclusion: There is not enough evidence that the population mean of total cholesterol is less than 5.2.
+
+
+For testing if the population mean of total cholesterol is less than 5.2, I created two hypotheses. The null hypothesis was that the population mean of total cholesterol is equal to 5.2. The alternative hypothesis was that the population mean of total cholesterol is less than 5.2. The p-value for this test was found to be 0.1886. Because the p-value is larger than the significance level, 0.08, the decision was made to not reject the null hypothesis. The conclusion is that there is not enough evidence that the population mean of total cholesterol is less than 5.2. The 92% upper confidence bound from this test was 5.231239. This upper confidence bound supports our conclusion as 5.2, the hypothesized value, is below it.
+
+
+
+## Does Pulse Vary Between Smokers and Non-Smokers?
+
+To test for equal variances:
+
+H_0: sigma squared_Non-Smoker / sigma squared_Smoker = 1
+
+H_1: sigma squared_Non-Smoker / sigma squared_Smoker != 1
+
+``` {r testing for equal variances,  echo = FALSE}
+
+var.test(medical_data$Pulse ~ medical_data$Smoker, ratio = 1, alternative = "two.sided", conf.level = 0.96)
+
+```
+p-value: 0.6888
+
+Decision: Do not reject H_0
+
+Conclusion: There is not enough evidence that the population variance of pulse for non-smokers is different from that of smokers.
+
+Testing for a Difference of Means:
+
+H_0: mu_Non-Smoker - mu_Smoker = 0
+
+H_1: mu_Non-Smoker - mu_Smoker != 0
+
+``` {r testing for a difference of means, echo = FALSE}
+
+t.test(medical_data$Pulse ~ medical_data$Smoker, mu = 0, var.equal = TRUE, alternative = "two.sided", conf.level = 0.96)
+
+```
+p-value: 0.0345
+
+Decision: Reject H_0
+
+Conclusion: There is enough evidence that the population mean pulse is different between those who smoke and those who do not.
+
+
+Before testing for a difference of means, I first tested whether the variances of pulse for smokers and non-smokers could be assumed to be equal. For that test the null hypothesis was that sigma squared for non-smokers divided by sigma squared for smokers is equal to 1, while the alternative hypothesis was that sigma squared for non-smokers divided by sigma squared for smokers is not equal to 1. For this test the p-value was found to be 0.6888; because this p-value was larger than the significance level, 0.04, the decision was made to not reject the null hypothesis. The conclusion for this test was that there is not enough evidence that the population variance of pulse for non-smokers is different from that of smokers. For testing if there is a difference in the mean pulse between those who smoke and those who do not, I created two hypotheses. The null hypothesis was that the population mean pulse of non-smokers minus the population mean pulse of smokers is equal to 0. The alternative hypothesis was that the population mean pulse of non-smokers minus the population mean pulse of smokers is not equal to 0. The p-value for this test was found to be 0.0345. Because the p-value is smaller than 0.04, the significance level, the decision was made to reject the null hypothesis. The conclusion is that there is enough evidence that the population mean pulse is different between those who smoke and those who do not. The 96% confidence interval from this test was -5.43629955 to -0.07940833. This confidence interval supports the conclusion that there is enough evidence of a difference of means as, 0, the hypothesized value, is not within the confidence interval.
