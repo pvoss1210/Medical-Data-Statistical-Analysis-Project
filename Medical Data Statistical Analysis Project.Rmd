@@ -205,7 +205,10 @@ tapply(medical_data$BMI, Age_Tier, summary)
 
 ```
 
-I do think that BMI varies by age tier. While the medians for the young adult, middle aged, and senior groups appear fairly close to one another, the median for the adult group is less similar to the medians of the other groups, as can be seen from both the boxplot and the summary statistics. Also, the upper fence and 3rd quartile value, 34.36, for the adult group are notably higher than the upper fences and 3rd quartile values for the other groups, which are relatively similar to one another. Other notable differences between the groups include the relatively low lower fence for the young adult group, and the presence of multiple outliers in the middle aged group.
+I do think that BMI varies by age tier. While the medians for the young adult, middle aged, and senior groups appear fairly close to one another, the median for the adult
+group is less similar to the medians of the other groups, as can be seen from both the boxplot and the summary statistics. Also, the upper fence and 3rd quartile value,
+34.36, for the adult group are notably higher than the upper fences and 3rd quartile values for the other groups, which are relatively similar to one another. Other
+notable differences between the groups include the relatively low lower fence for the young adult group, and the presence of multiple outliers in the middle aged group.
 
 
 
