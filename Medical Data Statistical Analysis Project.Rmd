@@ -175,7 +175,11 @@ Decision: Do not reject H_0
 Conclusion: There is not enough evidence that pulse is not normally distributed.
 
 
-It seems that pulse is normally distributed. The points on the Q-Q plot follow the reference line well which is consistent with the idea that pulse is normally distributed. The skewness value was 0.0865184 and the kurtosis value was -0.1884771; both of these values are relatively close to 0, also consistent with the idea that Pulse is normally distributed. For the Shapiro_Wilk test, the null hypothesis was that pulse is normally distributed, and the alternative hypothesis was that pulse is not normally distributed. The p-value for this test was 0.4107, which was greater than the significance level, 0.03. Because the p-value was greater than the significance level the decision was made to not reject the null hypothesis. The conclusion was that there is not enough evidence that pulse is not normally distributed.
+It seems that pulse is normally distributed. The points on the Q-Q plot follow the reference line well which is consistent with the idea that pulse is normally
+distributed. The skewness value was 0.0865184 and the kurtosis value was -0.1884771; both of these values are relatively close to 0, also consistent with the idea that
+Pulse is normally distributed. For the Shapiro_Wilk test, the null hypothesis was that pulse is normally distributed, and the alternative hypothesis was that pulse is
+not normally distributed. The p-value for this test was 0.4107, which was greater than the significance level, 0.03. Because the p-value was greater than the significance
+level the decision was made to not reject the null hypothesis. The conclusion was that there is not enough evidence that pulse is not normally distributed.
 
 
 
