@@ -92,7 +92,12 @@ table(medical_data$MaritalStatus)
 
 ```
 
-The marital status bar plot above shows the frequency in the data for each marital status. The labels of the bars represent different marital statuses with D representing divorced, LP representing live partner, M representing married, NM representing never married, S representing separated, and W representing widowed. The bars for each marital status in order from highest to lowest are M, NM, LP, D, W, and S corresponding to the relative frequency in the data of each marital status from most frequent to least frequent. The frequency table shows the counts from the data for each marital status. By comparing these counts to each other, it can be determined how common each marital status is in the data relative to the other marital statuses. The counts for each marital status in order from highest to lowest are: 153 for married, 52 for never married, 28 for live partner, 26 for divorced, 16 for widowed, and 6 for separated.
+The marital status bar plot above shows the frequency in the data for each marital status. The labels of the bars represent different marital statuses with D representing
+divorced, LP representing live partner, M representing married, NM representing never married, S representing separated, and W representing widowed. The bars for each
+marital status in order from highest to lowest are M, NM, LP, D, W, and S corresponding to the relative frequency in the data of each marital status from most frequent to
+least frequent. The frequency table shows the counts from the data for each marital status. By comparing these counts to each other, it can be determined how common each
+marital status is in the data relative to the other marital statuses. The counts for each marital status in order from highest to lowest are: 153 for married, 52 for never
+married, 28 for live partner, 26 for divorced, 16 for widowed, and 6 for separated.
 
 
 
