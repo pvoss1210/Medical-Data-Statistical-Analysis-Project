@@ -232,7 +232,11 @@ Decision: Do not reject H_0
 Conclusion: There is not enough evidence that the population mean of total cholesterol is less than 5.2.
 
 
-For testing if the population mean of total cholesterol is less than 5.2, I created two hypotheses. The null hypothesis was that the population mean of total cholesterol is equal to 5.2. The alternative hypothesis was that the population mean of total cholesterol is less than 5.2. The p-value for this test was found to be 0.1886. Because the p-value is larger than the significance level, 0.08, the decision was made to not reject the null hypothesis. The conclusion is that there is not enough evidence that the population mean of total cholesterol is less than 5.2. The 92% upper confidence bound from this test was 5.231239. This upper confidence bound supports our conclusion as 5.2, the hypothesized value, is below it.
+For testing if the population mean of total cholesterol is less than 5.2, I created two hypotheses. The null hypothesis was that the population mean of total cholesterol
+is equal to 5.2. The alternative hypothesis was that the population mean of total cholesterol is less than 5.2. The p-value for this test was found to be 0.1886. Because
+the p-value is larger than the significance level, 0.08, the decision was made to not reject the null hypothesis. The conclusion is that there is not enough evidence that
+the population mean of total cholesterol is less than 5.2. The 92% upper confidence bound from this test was 5.231239. This upper confidence bound supports our conclusion
+as 5.2, the hypothesized value, is below it.
 
 
 
