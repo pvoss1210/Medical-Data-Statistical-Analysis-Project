@@ -119,7 +119,14 @@ proportions(smoker_by_education, 2)
 
 ```
 
-I do think that smoking status varies by education level. While the barplots show similar proportions of smokers and non-smokers between the 8th grade and 9-11th grade groups, the proportion of smokers declines for each of the next three education levels. The most significant declines occur between the 9-11th grade and high school groups, and the some college and college grad groups. The declines in the proportion of smokers can be seen on the bar plots by the progressively lower heights of the red bars after the 9-11th grade group's bar plot. It can be seen from the table of proportions, showing the probability of being a smoker (and not being a smoker) given education level, that the proportion of smokers drops from  0.6000000 to 0.5000000 between the 9-11th grade and high school groups, drops again from 0.5000000 to 0.4623656 between the high school and some college groups and finally, drops from 0.4623656 to 0.3289474 between the some college and college grad groups. In the group with the highest proportion of smokers, the 9-11th grade group, the majority of individuals in the data smoke (proportion of smokers: 0.6000000), while in the group with the lowest proportion of smokers, the college grad group, less than a third of the individuals in the data smoke (proportion of smokers: 0.3289474).
+I do think that smoking status varies by education level. While the barplots show similar proportions of smokers and non-smokers between the 8th grade and 9-11th grade
+groups, the proportion of smokers declines for each of the next three education levels. The most significant declines occur between the 9-11th grade and high school
+groups, and the some college and college grad groups. The declines in the proportion of smokers can be seen on the bar plots by the progressively lower heights of the red
+bars after the 9-11th grade group's bar plot. It can be seen from the table of proportions, showing the probability of being a smoker (and not being a smoker) given
+education level, that the proportion of smokers drops from  0.6000000 to 0.5000000 between the 9-11th grade and high school groups, drops again from 0.5000000 to
+0.4623656 between the high school and some college groups and finally, drops from 0.4623656 to 0.3289474 between the some college and college grad groups. In the group
+with the highest proportion of smokers, the 9-11th grade group, the majority of individuals in the data smoke (proportion of smokers: 0.6000000), while in the group with
+the lowest proportion of smokers, the college grad group, less than a third of the individuals in the data smoke (proportion of smokers: 0.3289474).
 
 
 
