@@ -67,7 +67,13 @@ summary(medical_data$BPSysAve)
 
 ```
   
-The histogram for BPSysAve appears right skewed; the bulk of the volume of the histogram's bars is towards the left of the graph, with data values stretching further to the right of the peak than to the left. The box part of the boxplot (the gray box) appears symmetric. The right whisker (the dotted line to the right of the gray box) of the boxplot appears a decent bit longer than the left whisker. It can be seen from the boxtplot that the BPSysAve data contains three outliers, shown by the three circles on the right side of the graph. Outliers are values in the data that significantly deviate from most other values in the data. The median of the data is 119.0 and the mean of the data is 120.2; these statistics can be used as measures of center. Values in the data range from 86.0, the minimum, or smallest, value in the data to 168.0, the maximum, or largest, value in the data. The 1st quartile value, 109.0, represents the value that 25% of the data falls below, and the 3rd quartile value, 129.0, represents the value that 75% of the data falls below. 
+The histogram for BPSysAve appears right skewed; the bulk of the volume of the histogram's bars is towards the left of the graph, with data values stretching further to
+the right of the peak than to the left. The box part of the boxplot (the gray box) appears symmetric. The right whisker (the dotted line to the right of the gray box) of
+the boxplot appears a decent bit longer than the left whisker. It can be seen from the boxtplot that the BPSysAve data contains three outliers, shown by the three circles
+on the right side of the graph. Outliers are values in the data that significantly deviate from most other values in the data. The median of the data is 119.0 and the
+mean of the data is 120.2; these statistics can be used as measures of center. Values in the data range from 86.0, the minimum, or smallest, value in the data to 168.0,
+the maximum, or largest, value in the data. The 1st quartile value, 109.0, represents the value that 25% of the data falls below, and the 3rd quartile value, 129.0,
+represents the value that 75% of the data falls below. 
    
   
 
