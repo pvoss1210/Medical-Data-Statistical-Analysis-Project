@@ -27,7 +27,8 @@ head(medical_data)
 
 medical_data$Gender <- factor(medical_data$Gender)
 
-medical_data$Education <- factor(medical_data$Education, ordered = TRUE, levels = c("8th Grade", "9 - 11th Grade", "High School", "Some College", "College Grad"))
+medical_data$Education <- factor(medical_data$Education, ordered = TRUE, levels = c("8th Grade", "9 -
+11th Grade", "High School", "Some College", "College Grad"))
 
 medical_data$MaritalStatus <- factor(medical_data$MaritalStatus)
 
@@ -81,7 +82,9 @@ represents the value that 75% of the data falls below.
 
 ``` {r creating a bar plot for MaritalStatus frequency, echo = FALSE}
 
-barplot(table(medical_data$MaritalStatus), main =  "Marital Status Bar Plot", ylab = "Frequency", xlab = "Marital Status", names.arg= c("D", "LP", "M", "NM", "S", "W"), col = c("coral", "chartreuse2", "dodgerblue1", "firebrick3", "gold2", "aquamarine1"))
+barplot(table(medical_data$MaritalStatus), main =  "Marital Status Bar Plot", ylab = "Frequency", xlab =
+"Marital Status", names.arg= c("D", "LP", "M", "NM", "S", "W"), col = c("coral", "chartreuse2",
+"dodgerblue1", "firebrick3", "gold2", "aquamarine1"))
 
 
 ```
@@ -107,7 +110,9 @@ married, 28 for live partner, 26 for divorced, 16 for widowed, and 6 for separat
  
 smoker_by_education <- table(medical_data$Smoker, medical_data$Education)
 
-barplot(proportions(smoker_by_education, 2), beside = TRUE, main = "Sample Proportions of Smoking Status by Education Level", ylab = "Proportion", xlab = "Education Level", ylim = c(0, 1), legend.text = row.names(smoker_by_education), col = c("gold", "red"))
+barplot(proportions(smoker_by_education, 2), beside = TRUE, main = "Sample Proportions of Smoking Status
+by Education Level", ylab = "Proportion", xlab = "Education Level", ylim = c(0, 1), legend.text =
+row.names(smoker_by_education), col = c("gold", "red"))
 
 ```
 
@@ -134,7 +139,7 @@ the lowest proportion of smokers, the college grad group, less than a third of t
 
 ``` {r Pulse Q-Q plot, echo = FALSE}
 
-qqnorm(medical_data$Pulse, main = "Q-Q Plot of Pulse Sample",)
+qqnorm(medical_data$Pulse, main = "Q-Q Plot of Pulse Sample")
 qqline(medical_data$Pulse)
 
 ```
@@ -187,7 +192,8 @@ level the decision was made to not reject the null hypothesis. The conclusion wa
 
 ``` {r constructing Age_tier, echo = TRUE}
  
-Age_Tier <- cut(medical_data$Age, breaks = c(0, 32, 45, 65, Inf), right = FALSE, labels = c("Young Adult", "Adult", "Middle Aged", "Seniors"), ordered_result = TRUE)
+Age_Tier <- cut(medical_data$Age, breaks = c(0, 32, 45, 65, Inf), right = FALSE, labels = c("Young
+Adult", "Adult", "Middle Aged", "Seniors"), ordered_result = TRUE)
 
 
 ```
@@ -221,7 +227,8 @@ H_1: mu_total_cholesterol < 5.2
 
 ``` {r TotChol hypothesis testing, echo = FALSE}
 
-t.test(medical_data$TotChol, mu = 5.2, alternative = "less", conf.level = 0.92)
+t.test(medical_data$TotChol, mu = 5.2, alternative = "less", conf.level =
+0.92)
 
 ```
 
@@ -267,7 +274,8 @@ H_1: mu_Non-Smoker - mu_Smoker != 0
 
 ``` {r testing for a difference of means, echo = FALSE}
 
-t.test(medical_data$Pulse ~ medical_data$Smoker, mu = 0, var.equal = TRUE, alternative = "two.sided", conf.level = 0.96)
+t.test(medical_data$Pulse ~ medical_data$Smoker, mu = 0, var.equal = TRUE, alternative = "two.sided",
+conf.level = 0.96)
 
 ```
 p-value: 0.0345
